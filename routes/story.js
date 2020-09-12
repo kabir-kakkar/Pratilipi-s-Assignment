@@ -32,7 +32,7 @@ router.post("/", middleware.isLoggedIn, function (req, res){
         id: req.user._id,
         username: req.user.username
     } 
-    var newStory = {storyTitle: name, image: image, storyContent: description, author: author};
+    var newStory = {storyTitle: name, image: image, storyContent: description, author: author, userCount: 0};
     
     Story.create(newStory, function(err, newlyCreated){
         if(err){
@@ -50,6 +50,11 @@ router.get("/:id", function(req, res){
         if(err){
             console.log(err);
         } else {
+            if (req.isAuthenticated()) {
+                // Simply Adding another view count if the user is authenticated
+                foundStory.userCount += 1;
+                foundStory.save();
+            }
             res.render("story/show.ejs", {story: foundStory});
         }
     });

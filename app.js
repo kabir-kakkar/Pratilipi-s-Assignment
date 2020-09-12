@@ -14,7 +14,6 @@ var commentRoutes    = require("./routes/comments"),
     storyRoutes      = require("./routes/story"),
     indexRoutes      = require("./routes/index")
 
-
 mongoose.connect("mongodb://localhost:27017/yelp_camp", {useNewUrlParser: true, useUnifiedTopology: true });
 app.use(bodyParser.urlencoded({extended:true}));
 // __dirname is the directory on which this script is running

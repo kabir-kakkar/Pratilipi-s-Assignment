@@ -4,6 +4,7 @@ var storySchema = new mongoose.Schema ({
     storyTitle: String,
     image: String,
     storyContent: String,
+    userCount: Number,
     author: {
        id: {
          type: mongoose.Schema.Types.ObjectId,

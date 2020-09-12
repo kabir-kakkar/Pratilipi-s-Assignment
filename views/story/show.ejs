@@ -1,5 +1,6 @@
 <%- include("../partials/header") %>
 
+
 <div class="container">
     <div class="row">
         <div class="col-md-3">
@@ -16,7 +17,10 @@
                     <p><%= story.storyContent %></p>
                     <p>
                         <em>Submitted By <%= story.author.username %></em>
+                        <br/>
+                        <em>Total Views: <%= story.userCount %></em>
                     </p>
+                    
                     <% if (currentUser && story.author.id.equals(currentUser._id))  { %>
                         <a class="btn btn-xs btn-warning" href="/story/<%= story._id %>/edit">Edit</a>
                         <form class = "delete-form" action="/story/<%= story._id%>?_method=DELETE" method = "POST">

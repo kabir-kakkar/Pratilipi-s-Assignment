@@ -10,7 +10,8 @@ var data = [
         author:{
             id : "588c2e092403d111454fff76",
             username: "Jack"
-        }
+        },
+        userCount: 0
     },
     {
         storyTitle: "Desert Mesa", 
@@ -19,7 +20,8 @@ var data = [
         author:{
             id : "588c2e092403d111454fff71",
             username: "Jill"
-        }
+        },
+        userCount: 0
     },
     {
         storyTitle: "Canyon Floor", 
@@ -28,7 +30,8 @@ var data = [
         author:{
             id : "588c2e092403d111454fff77",
             username: "Jane"
-        }
+        },
+        userCount: 0
     }
 ]
  
