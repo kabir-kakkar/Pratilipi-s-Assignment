@@ -26,17 +26,14 @@ router.post("/register", function(req, res){
             return res.redirect("/register");
         }
         passport.authenticate("local")(req, res, function(){
-            req.flash ("success", "Welcome to Yelpcamp " + user.username);
-            res.redirect ("/campgrounds");
+            req.flash ("success", "Welcome to Pratilipi,  " + user.username);
+            res.redirect ("/story");
         });
     });
 });
 
 // SHOW LOG IN FORM
 router.get("/login", function(req, res){
-    // Per the docs, you can either set a flash message on the 
-    // req.flash object before returning a res.redirect() or 
-    //you can pass the req.flash object into the res.render() function.
     res.render("login.ejs");
 });
 
@@ -44,7 +41,7 @@ router.get("/login", function(req, res){
 // app.post ("/route", middleware, callbackfunction)
 router.post ("/login", passport.authenticate("local", 
     {
-        successRedirect: "/campgrounds",
+        successRedirect: "/story",
         failureRedirect: "/login"
     }), function(req, res){
             // THIS CALLBACK DOESN'T DO ANYTHING
@@ -52,12 +49,9 @@ router.post ("/login", passport.authenticate("local",
 
 // LOG OUT ROUTE
 router.get("/logout", function(req, res){
-    // Passport exposes a logout() function on req (also aliased as logOut()) 
-    //that can be called from any route handler which needs to terminate a login session. 
-    //Invoking logout() will remove the req.user property and clear the login session (if any).
     req.logout();
     req.flash("success", "Logged you out");
-    res.redirect("/campgrounds");
+    res.redirect("/story");
 });
 
 module.exports = router;
