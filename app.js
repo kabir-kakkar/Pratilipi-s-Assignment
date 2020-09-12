@@ -14,7 +14,13 @@ var commentRoutes    = require("./routes/comments"),
     storyRoutes      = require("./routes/story"),
     indexRoutes      = require("./routes/index")
 
-mongoose.connect("mongodb://localhost:27017/yelp_camp", {useNewUrlParser: true, useUnifiedTopology: true });
+//mongoose.connect("mongodb://localhost:27017/pratalipi", {useNewUrlParser: true, useUnifiedTopology: true });
+var url = process.env.DATABASEURL || "mongodb://localhost:27017/pratalipi";
+mongoose.connect(url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
+
 app.use(bodyParser.urlencoded({extended:true}));
 // __dirname is the directory on which this script is running
 // Serve public directory for using stylesheet
@@ -50,4 +56,7 @@ app.use("/story", storyRoutes);
 app.use("/story/:id/comments", commentRoutes);
 
 var PORT = process.env.PORT || 3000;
-app.listen(PORT, process.env.IP);
+//app.listen(PORT, process.env.IP);
+app.listen(PORT, function() {
+    console.log("listening on http://localhost:3000/");
+});
